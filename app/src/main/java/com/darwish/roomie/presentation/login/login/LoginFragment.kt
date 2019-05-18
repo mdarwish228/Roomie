@@ -10,7 +10,7 @@ import androidx.navigation.Navigation
 import com.darwish.roomie.R
 import com.darwish.roomie.common.ButtonUtils
 import com.darwish.roomie.common.ToastUtils
-import com.darwish.roomie.presentation.main.MainActivity
+import com.darwish.roomie.presentation.group.GroupActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_login.*
 import java.util.*
@@ -37,7 +37,7 @@ class LoginFragment : Fragment() {
                 auth.signInWithEmailAndPassword(emailEditText.text.toString(), passwordEditText.text.toString())
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            val intent = Intent(activity, MainActivity::class.java)
+                            val intent = Intent(activity, GroupActivity::class.java)
                             startActivity(intent)
                             activity!!.finish()
                         } else {
