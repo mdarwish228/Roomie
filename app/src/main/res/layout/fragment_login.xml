@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   tools:context=".presentation.login.login.LoginFragment" android:id="@+id/frameLayout">
+
+    <androidx.constraintlayout.widget.Guideline
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/titleTopGuideline"
+            app:layout_constraintGuide_percent="0.05"/>
+    <androidx.constraintlayout.widget.Guideline
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/titleBottomGuideline"
+            app:layout_constraintGuide_percent="0.15"/>
+    <androidx.constraintlayout.widget.Guideline
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/loginBottomGuideline"
+            app:layout_constraintGuide_percent="0.97"/>
+    <androidx.constraintlayout.widget.Guideline
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/loginTopGuideline"
+            app:layout_constraintGuide_percent="0.71"/>
+    <androidx.constraintlayout.widget.Guideline
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/loginMiddleGuideline"
+            app:layout_constraintGuide_percent="0.89"/>
+    <androidx.constraintlayout.widget.Guideline
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/loginLeftGuideline"
+            app:layout_constraintGuide_percent="0.15"/>
+    <androidx.constraintlayout.widget.Guideline
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/titleLeftGuideline"
+            app:layout_constraintGuide_percent="0.05"/>
+    <androidx.constraintlayout.widget.Guideline
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/titleRightGuideline"
+            app:layout_constraintGuide_percent="0.95"/>
+    <androidx.constraintlayout.widget.Guideline
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/loginRightGuideline"
+            app:layout_constraintGuide_percent="0.85"/>
+    <TextView
+            android:text="@string/textview_login_welcome_string"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/welcomeTextView"
+            app:layout_constraintTop_toTopOf="@+id/titleTopGuideline" android:textSize="36sp"
+            app:layout_constraintStart_toStartOf="@+id/titleLeftGuideline" android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toStartOf="@+id/titleRightGuideline"
+            app:layout_constraintBottom_toTopOf="@+id/titleBottomGuideline" android:textAlignment="center"
+            app:layout_constraintHorizontal_bias="1.0" app:layout_constraintVertical_bias="0.0"
+            android:autoSizeTextType="uniform"
+    />
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/emailEditText"
+            android:hint="@string/input_email_string"
+            app:layout_constraintBottom_toTopOf="@+id/passwordEditText"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="@+id/loginLeftGuideline"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintTop_toTopOf="@+id/loginTopGuideline"
+            app:layout_constraintEnd_toStartOf="@+id/loginRightGuideline"
+            android:autofillHints="@string/input_email_string"/>
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/passwordEditText"
+            android:hint="@string/input_password_string"
+            app:layout_constraintTop_toBottomOf="@+id/emailEditText"
+            android:layout_marginEnd="8dp" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="@+id/loginLeftGuideline"
+            app:layout_constraintEnd_toStartOf="@+id/loginRightGuideline"
+            app:layout_constraintBottom_toTopOf="@+id/loginMiddleGuideline"
+            android:autofillHints="@string/input_password_string" android:layout_marginBottom="8dp"/>
+    <Button
+            android:text="@string/button_signin_string"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/signinButton" app:layout_constraintEnd_toStartOf="@+id/signupButton"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="@+id/loginLeftGuideline"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/loginBottomGuideline"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintTop_toTopOf="@+id/loginMiddleGuideline"/>
+    <Button
+            android:text="@string/button_signup_string"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/signupButton" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@+id/signinButton"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/loginBottomGuideline"
+            app:layout_constraintEnd_toStartOf="@+id/loginRightGuideline"
+            app:layout_constraintTop_toTopOf="@+id/loginMiddleGuideline"/>
+
+    <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/loginImageView"
+            app:layout_constraintTop_toBottomOf="@+id/welcomeTextView"
+            app:layout_constraintBottom_toTopOf="@+id/loginTopGuideline"
+            app:layout_constraintStart_toStartOf="@+id/loginLeftGuideline"
+            app:layout_constraintEnd_toStartOf="@+id/loginRightGuideline" android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp" android:contentDescription="@string/imageview_logo_description_string"
+            app:srcCompat="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

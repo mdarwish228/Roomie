@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Roomie</string>
+
+    <!--Bottom Navigation Items-->
+    <string name="bottom_navigation_home">Home</string>
+    <string name="bottom_navigation_notes">Notes</string>
+    <string name="bottom_navigation_chat">Chat</string>
+
+    <!--Text Views-->
+    <string name="textview_login_welcome_string">Welcome to Roomie</string>
+
+    <!--Buttons-->
+    <string name="button_signup_string">Sign Up</string>
+    <string name="button_signin_string">Sign In</string>
+
+    <!--Text Input-->
+    <string name="input_email_string">Email</string>
+    <string name="input_password_string">Password</string>
+
+    <!--Image View-->
+    <string name="imageview_logo_description_string">iSpy Logo</string>
+
+    <!--Toast messages-->
+    <string name="toast_invalid_login">Failed to sign in</string>
+    <string name="toast_empty_username_password">Please enter a username and password</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

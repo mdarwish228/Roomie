@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:id="@+id/homeFragment"
+            android:icon="@drawable/home_icon"
+            android:title="@string/bottom_navigation_home"/>
+
+    <item
+            android:id="@+id/notesFragment"
+            android:icon="@drawable/notes_icon"
+            android:title="@string/bottom_navigation_notes"/>
+
+    <item
+            android:id="@+id/chatFragment"
+            android:icon="@drawable/chat_icon"
+            android:title="@string/bottom_navigation_chat"/>
+
+</menu>
