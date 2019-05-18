@@ -9,18 +9,18 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".presentation.splashscreen.SplashActivity" android:theme="@style/SplashTheme" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+
+            </intent-filter>
+        </activity>
         <activity android:name=".presentation.group.GroupActivity">
         </activity>
         <activity android:name=".presentation.login.LoginActivity">
         </activity>
-        <activity
-                android:name=".presentation.main.MainActivity"
-                android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+        <activity android:name=".presentation.main.MainActivity">
         </activity>
     </application>
 
