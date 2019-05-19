@@ -1,4 +1,4 @@
-package com.darwish.roomie.presentation.group.group
+package com.darwish.roomie.presentation.group.pendinggroups
 
 
 import android.os.Bundle
@@ -8,13 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import com.darwish.roomie.R
 
-
-class GroupFragment : Fragment() {
+class PendingGroupsFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_group, container, false)
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_pending_groups, container, false)
     }
+
+
 }

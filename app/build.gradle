@@ -62,5 +62,6 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 
-    implementation "androidx.lifecycle:lifecycle-viewmodel:2.0.0" // For Kotlin use lifecycle-viewmodel-ktx
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.0.0"
+    implementation 'androidx.viewpager:viewpager:1.0.0'
 }
