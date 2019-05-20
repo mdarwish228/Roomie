@@ -1,4 +1,4 @@
-package com.darwish.roomie.presentation.group
+package com.darwish.roomie.presentation.group.common
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
