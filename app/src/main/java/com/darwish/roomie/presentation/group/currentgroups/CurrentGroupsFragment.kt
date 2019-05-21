@@ -8,8 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.room.Room
 import com.darwish.roomie.R
 import com.darwish.roomie.common.ToastUtils
+import com.darwish.roomie.data.config.Config
+import com.darwish.roomie.data.database.ConfigDatabase
 import com.darwish.roomie.data.group.Group
 import com.darwish.roomie.presentation.group.common.GroupViewHolder
 import com.darwish.roomie.presentation.login.LoginActivity
@@ -36,6 +39,11 @@ class CurrentGroupsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val configDatabase = Room.databaseBuilder(
+            activity!!.applicationContext,
+            ConfigDatabase::class.java, "config-database"
+        ).allowMainThreadQueries().build()
+
         auth = FirebaseAuth.getInstance()
         val user = auth.currentUser
 
@@ -50,7 +58,7 @@ class CurrentGroupsFragment : Fragment() {
 
         val options: FirestoreRecyclerOptions<Group> = FirestoreRecyclerOptions.Builder<Group>()
             .setQuery(query, Group::class.java)
-                .build();
+            .build()
 
         groupAdapter = object : FirestoreRecyclerAdapter<Group, GroupViewHolder>(options) {
 
@@ -60,8 +68,8 @@ class CurrentGroupsFragment : Fragment() {
                     ToastUtils.createToast(activity as FragmentActivity, group.group_name.toString())
                 }
                 groupViewHolder.itemView.setOnClickListener {
+                    configDatabase.configDao().insert(Config("groupId", group.id.toString()))
                     navigateToMainActivity(group.id.toString())
-                    // TODO: Save groupId in local storage
                 }
             }
 
@@ -74,7 +82,7 @@ class CurrentGroupsFragment : Fragment() {
         }
 
         groupRecyclerView.adapter = groupAdapter
-        groupRecyclerView.layoutManager = LinearLayoutManager(activity);
+        groupRecyclerView.layoutManager = LinearLayoutManager(activity)
     }
 
     override fun onResume() {
