@@ -3,6 +3,9 @@ package com.darwish.roomie.data.group
 import java.util.*
 
 class Group {
+
+    var id: String? = null
+
     var group_name: String? = null
 
     var group_members: List<String>? = null
@@ -11,7 +14,8 @@ class Group {
 
     constructor() {} // Needed for Firebase
 
-    constructor(groupName: String, groupMembers: List<String>, lastModified: Date) {
+    constructor(id: String, groupName: String, groupMembers: List<String>, lastModified: Date) {
+        this.id = id
         this.group_name = groupName
         this.group_members = groupMembers
         this.last_modified = lastModified

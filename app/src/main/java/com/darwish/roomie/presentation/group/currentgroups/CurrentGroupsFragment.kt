@@ -2,23 +2,24 @@ package com.darwish.roomie.presentation.group.currentgroups
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.darwish.roomie.R
+import com.darwish.roomie.common.ToastUtils
+import com.darwish.roomie.data.group.Group
 import com.darwish.roomie.presentation.group.common.GroupViewHolder
 import com.darwish.roomie.presentation.login.LoginActivity
-import com.darwish.roomie.data.group.Group
+import com.darwish.roomie.presentation.main.MainActivity
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.fragment_current_groups.*
-
 
 class CurrentGroupsFragment : Fragment() {
 
@@ -52,8 +53,16 @@ class CurrentGroupsFragment : Fragment() {
                 .build();
 
         groupAdapter = object : FirestoreRecyclerAdapter<Group, GroupViewHolder>(options) {
+
             override fun onBindViewHolder(groupViewHolder: GroupViewHolder, position: Int, group: Group) {
                 groupViewHolder.groupName.text = group.group_name
+                groupViewHolder.settingsIcon.setOnClickListener {
+                    ToastUtils.createToast(activity as FragmentActivity, group.group_name.toString())
+                }
+                groupViewHolder.itemView.setOnClickListener {
+                    navigateToMainActivity(group.id.toString())
+                    // TODO: Save groupId in local storage
+                }
             }
 
             override fun onCreateViewHolder(group: ViewGroup, i: Int): GroupViewHolder {
@@ -82,5 +91,11 @@ class CurrentGroupsFragment : Fragment() {
         val intent = Intent(activity, LoginActivity::class.java)
         startActivity(intent)
         activity?.finish()
+    }
+
+    private fun navigateToMainActivity(groupId: String) {
+        val intent = Intent(activity, MainActivity::class.java)
+        intent.putExtra("groupId", groupId)
+        startActivity(intent)
     }
 }

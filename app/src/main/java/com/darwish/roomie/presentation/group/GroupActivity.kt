@@ -23,4 +23,8 @@ class GroupActivity : AppCompatActivity() {
 
         tabLayout.setupWithViewPager(viewPager)
     }
+
+    fun imageviewonclick() {
+
+    }
 }
