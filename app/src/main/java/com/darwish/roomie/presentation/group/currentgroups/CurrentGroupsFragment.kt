@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.darwish.roomie.R
@@ -15,6 +16,7 @@ import com.darwish.roomie.data.config.Config
 import com.darwish.roomie.data.database.ConfigDatabase
 import com.darwish.roomie.data.group.Group
 import com.darwish.roomie.presentation.group.common.GroupViewHolder
+import com.darwish.roomie.presentation.group.common.UserIconsRecyclerViewAdaptor
 import com.darwish.roomie.presentation.login.LoginActivity
 import com.darwish.roomie.presentation.main.MainActivity
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
@@ -22,6 +24,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.fragment_current_groups.*
 
 class CurrentGroupsFragment : Fragment() {
@@ -38,6 +41,8 @@ class CurrentGroupsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val firebaseStorage = FirebaseStorage.getInstance()
 
         val configDatabase = Room.databaseBuilder(
             activity!!.applicationContext,
@@ -64,6 +69,7 @@ class CurrentGroupsFragment : Fragment() {
 
             override fun onBindViewHolder(groupViewHolder: GroupViewHolder, position: Int, group: Group) {
                 groupViewHolder.groupName.text = group.group_name
+                groupViewHolder.description.text = group.description
                 groupViewHolder.settingsIcon.setOnClickListener {
                     ToastUtils.createToast(activity as FragmentActivity, group.group_name.toString())
                 }
@@ -71,6 +77,11 @@ class CurrentGroupsFragment : Fragment() {
                     configDatabase.configDao().insert(Config("groupId", group.id.toString()))
                     navigateToMainActivity(group.id.toString())
                 }
+
+                groupViewHolder.iconsRecyclerView.layoutManager = GridLayoutManager(activity, 10);
+                groupViewHolder.iconsRecyclerView.adapter = UserIconsRecyclerViewAdaptor(context!!,
+                    group.group_members!!, firebaseStorage
+                )
             }
 
             override fun onCreateViewHolder(group: ViewGroup, i: Int): GroupViewHolder {
@@ -81,8 +92,8 @@ class CurrentGroupsFragment : Fragment() {
             }
         }
 
-        groupRecyclerView.adapter = groupAdapter
         groupRecyclerView.layoutManager = LinearLayoutManager(activity)
+        groupRecyclerView.adapter = groupAdapter
     }
 
     override fun onResume() {
