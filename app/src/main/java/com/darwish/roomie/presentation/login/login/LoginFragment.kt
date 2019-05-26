@@ -30,7 +30,7 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         signinButton.setOnClickListener {
-            if (emailEditText.text.isNotEmpty() && passwordEditText.text.isNotEmpty()) {
+            if (emailEditText.text!!.isNotEmpty() && passwordEditText.text!!.isNotEmpty()) {
                 ButtonUtils.disableButtons(Arrays.asList(signinButton, signupButton))
 
                 auth = FirebaseAuth.getInstance()

@@ -62,9 +62,8 @@
             android:layout_marginEnd="8dp" app:layout_constraintEnd_toStartOf="@+id/titleRightGuideline"
             app:layout_constraintBottom_toTopOf="@+id/titleBottomGuideline" android:textAlignment="center"
             app:layout_constraintHorizontal_bias="1.0" app:layout_constraintVertical_bias="0.0"
-            android:autoSizeTextType="uniform"
     />
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:inputType="textEmailAddress"
@@ -76,9 +75,8 @@
             android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="@+id/loginLeftGuideline"
             android:layout_marginEnd="8dp"
             app:layout_constraintTop_toTopOf="@+id/loginTopGuideline"
-            app:layout_constraintEnd_toStartOf="@+id/loginRightGuideline"
-            android:autofillHints="@string/input_email_string"/>
-    <EditText
+            app:layout_constraintEnd_toStartOf="@+id/loginRightGuideline"/>
+    <com.google.android.material.textfield.TextInputEditText
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:inputType="textPassword"
@@ -90,8 +88,8 @@
             app:layout_constraintStart_toStartOf="@+id/loginLeftGuideline"
             app:layout_constraintEnd_toStartOf="@+id/loginRightGuideline"
             app:layout_constraintBottom_toTopOf="@+id/loginMiddleGuideline"
-            android:autofillHints="@string/input_password_string" android:layout_marginBottom="8dp"/>
-    <Button
+            android:layout_marginBottom="8dp"/>
+    <com.google.android.material.button.MaterialButton
             android:text="@string/button_signin_string"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -102,7 +100,7 @@
             app:layout_constraintBottom_toTopOf="@+id/loginBottomGuideline"
             android:layout_marginEnd="8dp"
             app:layout_constraintTop_toTopOf="@+id/loginMiddleGuideline"/>
-    <Button
+    <com.google.android.material.button.MaterialButton
             android:text="@string/button_signup_string"
             android:layout_width="0dp"
             android:layout_height="0dp"

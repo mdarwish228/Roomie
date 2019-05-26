@@ -9,6 +9,9 @@ import com.darwish.roomie.R
 import com.darwish.roomie.presentation.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
+import android.view.Menu
+import android.view.MenuItem
+import com.darwish.roomie.presentation.group.GroupActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,6 +20,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(findViewById(R.id.toolbar))
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
 
         auth = FirebaseAuth.getInstance()
         val user = auth.currentUser
@@ -25,6 +30,22 @@ class MainActivity : AppCompatActivity() {
             navigateToLoginActivity()
         } else {
             setupBottomNav()
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.toolbar, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.user -> {
+            navigateToGroupActivity()
+            true
+        }
+
+        else -> {
+            super.onOptionsItemSelected(item)
         }
     }
 
@@ -37,5 +58,10 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         finish()
+    }
+
+    private fun navigateToGroupActivity() {
+        val intent = Intent(this, GroupActivity::class.java)
+        startActivity(intent)
     }
 }

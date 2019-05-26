@@ -18,7 +18,7 @@
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintBottom_toTopOf="@+id/navigation"
-              app:layout_constraintTop_toTopOf="parent"/>
+              app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navigation"
@@ -29,5 +29,16 @@
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
     />
+    <androidx.appcompat.widget.Toolbar
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/ThemeOverlay.MaterialComponents.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
+            app:menu="@menu/toolbar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
