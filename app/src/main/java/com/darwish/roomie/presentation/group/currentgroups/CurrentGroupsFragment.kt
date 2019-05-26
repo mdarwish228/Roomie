@@ -78,7 +78,9 @@ class CurrentGroupsFragment : Fragment() {
                     navigateToMainActivity(group.id.toString())
                 }
 
-                groupViewHolder.iconsRecyclerView.layoutManager = GridLayoutManager(activity, 10);
+                val columnSize = if(group.group_members!!.size > 10) 10 else group.group_members!!.size
+
+                groupViewHolder.iconsRecyclerView.layoutManager = GridLayoutManager(activity, columnSize);
                 groupViewHolder.iconsRecyclerView.adapter = UserIconsRecyclerViewAdaptor(context!!,
                     group.group_members!!, firebaseStorage
                 )
